@@ -13,7 +13,7 @@ class Ball:
 
         self.x = random.randint(self.radius, WIDTH - self.radius)
         self.y = random.randint(self.radius, HEIGHT - self.radius)
-        self.numJumps = random.randint(1, 15)
+        self.numJumps = random.randint(5, 50)
 
         self.color = (
             random.randint(0, 255),
@@ -31,8 +31,13 @@ class Ball:
     def draw(self, surface):
         pygame.draw.circle(surface, self.color, (self.x, self.y), self.radius)
 
-
-numBalls = int(input("Enter amount of balls: "))
+while True:
+    numBalls = input("Enter amount of balls: ")
+    if numBalls.isdigit():
+        numBalls = int(numBalls)
+        break
+    else:
+        print("enter a valid number")
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
