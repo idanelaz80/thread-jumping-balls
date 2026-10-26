@@ -9,6 +9,9 @@ HEIGHT = 600
 class Ball:
 
     def __init__(self):
+        """
+        initializing the ball's values
+        """
         self.radius = 10  # רדיוס קבוע של 10 פיקסלים
 
         self.x = random.randint(self.radius, WIDTH - self.radius)
@@ -22,6 +25,10 @@ class Ball:
         )
 
     def jump(self):
+        """
+        moving the ball from a random place to another while decreasing the number of jumps left
+        :return:
+        """
         while self.numJumps > 0:
             time.sleep(0.5)
             self.x = random.randint(self.radius, WIDTH - self.radius)
@@ -29,11 +36,16 @@ class Ball:
             self.numJumps -= 1
 
     def draw(self, surface):
+        """
+        drawing the ball
+        :param surface: the screen
+        :return:
+        """
         pygame.draw.circle(surface, self.color, (self.x, self.y), self.radius)
 
 while True:
     numBalls = input("Enter amount of balls: ")
-    if numBalls.isdigit():
+    if numBalls.isdigit() and numBalls != '0':
         numBalls = int(numBalls)
         break
     else:
